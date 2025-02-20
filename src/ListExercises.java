@@ -162,4 +162,14 @@ public class ListExercises {
         return result;
     }
 
+    public static List<Integer> filterEvenNumbers(List<Integer> numbers) {
+        List<Integer> even = new ArrayList<>();
+        for (var number: numbers) {
+            if(number % 2 == 0) {
+                even.add(number);
+            }
+        }
+        return even;
+    }
+
 }
