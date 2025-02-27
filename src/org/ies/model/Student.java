@@ -1,7 +1,9 @@
+package org.ies.model;
 
 import java.util.Objects;
 
-public class Student {
+public class Student implements Comparable<Student> {
+
     private String name;
     private String surname;
     private String email;
@@ -12,6 +14,18 @@ public class Student {
         this.surname = surname;
         this.email = email;
         this.zipCode = zipCode;
+    }
+
+    @Override
+    public int compareTo(Student student) {
+        int compare = this.name.compareTo(student.getName());
+        if (compare == 0) {
+            compare = this.surname.compareTo(student.getSurname());
+            if (compare == 0) {
+                compare = this.email.compareTo(student.getSurname());
+            }
+        }
+        return compare;
     }
 
     public String getName() {
@@ -48,7 +62,6 @@ public class Student {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
         return zipCode == student.zipCode && Objects.equals(name, student.name) && Objects.equals(surname, student.surname) && Objects.equals(email, student.email);

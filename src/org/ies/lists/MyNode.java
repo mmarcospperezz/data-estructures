@@ -1,3 +1,4 @@
+package org.ies.lists;
 
 public class MyNode {
     private double value;

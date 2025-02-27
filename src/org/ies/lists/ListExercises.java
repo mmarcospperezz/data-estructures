@@ -1,10 +1,11 @@
+package org.ies.lists;
 
-import javax.swing.plaf.ListUI;
+import org.ies.model.Student;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class ListExercises {
     public static void main(String[] args) {
