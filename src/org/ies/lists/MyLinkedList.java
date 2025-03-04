@@ -12,42 +12,30 @@ public class MyLinkedList {
     }
 
     public void addFirst(double number) {
-        var node = new MyNode(
-                number,
-                head
-        );
-        head = node;
+       head = new MyNode(number,head);
     }
 
     public void add(double number) {
-        var node = new MyNode(
-                number,
-                null
-        );
-        if(head == null) {
-            head = node;
-        } else {
-            head.add(node);
-        }
+      if (head == null){
+          head = new MyNode(number, null);
+      } else {
+          var last = head;
+          while (last.getNext() != null){
+              last = last.getNext();
+          }
+          last.setNext(new MyNode(number, null));
+      }
     }
 
     public Double getFirst() {
-        if(isEmpty()) {
-            return null;
-        } else {
-            return head.getValue();
-        }
-    }
-
-    public void add(int value) {
-
+       if (head == null){
+           return null;
+       } else {
+           return head.getValue();
+       }
     }
 
     public boolean isEmpty() {
-        if(head == null) {
-            return true;
-        } else {
-            return false;
-        }
+       return head == null;
     }
 }

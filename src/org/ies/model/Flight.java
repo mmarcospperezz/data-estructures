@@ -3,7 +3,7 @@ package org.ies.model;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Flight {
+public class Flight implements Comparable<Flight> {
     private int number;
 
     private String company;
@@ -18,6 +18,12 @@ public class Flight {
         this.company = company;
         this.origin = origin;
         this.destination = destination;
+    }
+
+    @Override
+    public int compareTo(Flight flight) {
+
+        return 0;
     }
 
     public int getNumber() {
@@ -50,27 +56,5 @@ public class Flight {
 
     public void setDestination(String destination) {
         this.destination = destination;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Flight flight = (Flight) o;
-        return number == flight.number && Objects.equals(company, flight.company) && Objects.equals(origin, flight.origin) && Objects.equals(destination, flight.destination);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(number, company, origin, destination);
-    }
-
-    @Override
-    public String toString() {
-        return "Flight{" +
-                "number=" + number +
-                ", company='" + company + '\'' +
-                ", origin='" + origin + '\'' +
-                ", destination='" + destination + '\'' +
-                '}';
     }
 }

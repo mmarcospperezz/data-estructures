@@ -21,6 +21,7 @@ public class ListExercises {
             List<String> list, String value) {
         list.add(0, value);
         list.getLast();
+        // list.get(list.size() - 1)
         list.get(list.size() - 1);
         return list;
     }
@@ -89,25 +90,25 @@ public class ListExercises {
 
     public static List<Integer> askIntList() {
         Scanner scanner = new Scanner(System.in);
-        List<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers = new LinkedList<>();
         String answer = "";
         do {
             System.out.print("¿Desea introducir más números? (Y/n) ");
             answer = scanner.nextLine();
 
-            if (!answer.equals("Y")) {
+            if (!answer.equals("n")) {
                 System.out.print("Introduce un número: ");
                 int number = scanner.nextInt();
                 scanner.nextLine();
                 numbers.add(number);
             }
-        } while (answer.equals("n"));
+        } while (!answer.equals("n"));
         return numbers;
     }
 
     public static List<Integer> sum10(List<Integer> numbers) {
         List<Integer> result = new LinkedList<>();
-        for (var number: numbers) {
+        for (var number : numbers) {
             result.add(number + 10);
         }
         return result;
@@ -115,11 +116,11 @@ public class ListExercises {
 
     public static <T> List<T> union(List<T> numbers1, List<T> numbers2) {
         List<T> result = new LinkedList<>();
-        for (var number: numbers1) {
+        for (var number : numbers1) {
             result.add(number);
         }
 
-        for (var number: numbers2) {
+        for (var number : numbers2) {
             result.add(number);
         }
         return result;
@@ -127,9 +128,9 @@ public class ListExercises {
 
     public static <T> List<T> juntion(List<T> numbers1, List<T> numbers2) {
         List<T> result = new ArrayList<>();
-        for (var number: numbers1) {
+        for (var number : numbers1) {
             numbers1.remove(number);
-            if(numbers2.contains(number)) {
+            if (numbers2.contains(number)) {
                 result.add(number);
             }
         }
@@ -137,8 +138,8 @@ public class ListExercises {
     }
 
     public static <T> List<T> removeAll(List<T> numbers, List<T> numbersToRemove) {
-        for (var number: numbersToRemove) {
-            if(numbers.contains(number)) {
+        for (var number : numbersToRemove) {
+            if (numbers.contains(number)) {
                 numbers.remove(number);
             }
         }
@@ -147,15 +148,18 @@ public class ListExercises {
 
     public static List<String> mapToEmail(List<Student> students) {
         List<String> emails = new ArrayList<>();
-        for (var student: students) {
+        for (var student : students) {
             emails.add(student.getEmail());
         }
         return emails;
     }
 
-    public static List<Student> filterStudentByZipCode(List<Student> students, int zipCode){
+    public static List<Student> filterStudentsByZipCode(
+            List<Student> students,
+            int zipCode
+    ) {
         var result = new ArrayList<Student>();
-        for(var student : students ){
+        for (var student : students) {
             if (student.getZipCode() == zipCode) {
                 result.add(student);
             }
@@ -172,5 +176,4 @@ public class ListExercises {
         }
         return even;
     }
-
 }
